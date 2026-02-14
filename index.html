@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Asking her out💖</title>
+<title>Roza's Chaotic Valentine 💖</title>
+
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -51,7 +52,6 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
   100% { transform:translateY(-10vh); }
 }
 
-/* Appreciation Grid */
 #appreciation {
   width: 800px;
   margin: 0 auto;
@@ -75,19 +75,21 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
   text-align:center;
   margin-top:20px;
 }
+
+.text-effect { animation:textPop 0.5s ease-in-out infinite alternate; }
+@keyframes textPop { from{transform:scale(1);} to{transform:scale(1.1);} }
 </style>
 </head>
+
 <body>
 
 <!-- AUDIO -->
 <audio id="music1" preload="auto" loop>
   <source src="music1.mp3" type="audio/mpeg">
 </audio>
-
 <audio id="music2" preload="auto">
   <source src="music2.mp3" type="audio/mpeg">
 </audio>
-
 <audio id="music3" preload="auto" loop>
   <source src="music3.mp3" type="audio/mpeg">
 </audio>
@@ -144,11 +146,9 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
     <img src="heart9.jpg">
     <img src="heart10.jpg">
   </div>
-
   <div id="heartText">
     I'm so grateful that you exist in my life Rose. You're the prettiest girl in my eyes and I love absolutely everything about you. I love your humor, your smile, your laugh at my stupid jokes, your hair, your EYES. I ABSOLUTELY LOVE EVERYTHING ABOUT YOU MY ROSEEEEEE 💖
   </div>
-
   <button onclick="seriousPage()">Next</button>
 </div>
 
@@ -169,7 +169,7 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
 <!-- No1 -->
 <div id="no1" class="hidden">
   <img src="no1cat.jpg">
-  <h3>So you have chosen death....</h3>
+  <h3>So you have chosen… the wrong anime route 😭</h3>
   <button onclick="smirkYes()">Okay, I give in 😅</button>
 </div>
 
@@ -182,7 +182,7 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
 
 <!-- No3 -->
 <div id="no3" class="hidden">
-  <h3>If you click 'no' again, then Im posting these online.</h3>
+  <h3>If you press no again, I'm releasing your cute pictures to... myself because I'm obsessed 😌</h3>
   <img src="pic101.jpg" style="width:120px;">
   <img src="pic102.jpg" style="width:120px;">
   <img src="pic103.jpg" style="width:120px;">
@@ -209,121 +209,86 @@ img { max-width: 280px; margin: 15px; border-radius: 20px; }
 
 <div id="flowers" class="hidden">
   <img src="me-flower.jpg">
-  <h2>This is how virtually receiving flowers from me looks 🌹</h2>
+  <h2>This is how virtually receiving flowers from me looks like 🌹</h2>
 </div>
 
 <script>
-let noCount=0;
-let yesCount=0;
+let noCount = 0;
+let yesCount = 0;
 
-const smirks=[
-  {img:"smirk1.jpg", text:"Ki broo,sure tohh??"},
-  {img:"smirk2.jpg", text:"😏"},
-  {img:"smirk3.jpg", text:"Kya nonchalant bandi hain yaar, etooo iccha amr valentine howar??😏"}
+const smirks = [
+  {img:"smirk1.jpg", text:"Ki broo, atoi jante chao naki 😏"},
+  {img:"smirk2.jpg", text:"Ahem ahemm... ki bro, tumi na just bestie lago? 😏"},
+  {img:"smirk3.jpg", text:"Ki bro, apni na nonchalant dada??? 😏"}
 ];
 
 function hideAll(){
-  const pages=["step1","step2","angry","rose","gallery","appreciation","serious","valentine","no1","messi","no3","smirkContainer","yesPage","flowers"];
-  pages.forEach(id=>document.getElementById(id).classList.add("hidden"));
+  const pages = ["step1","step2","angry","rose","gallery","appreciation","serious","valentine","no1","messi","no3","smirkContainer","yesPage","flowers"];
+  pages.forEach(id => document.getElementById(id).classList.add("hidden"));
 }
 
-// STEP 1
 function startSequence(){
   hideAll();
   document.getElementById("step2").classList.remove("hidden");
-  document.getElementById("music1").currentTime=0;
-  document.getElementById("music1").play();
+  const music1 = document.getElementById("music1");
+  music1.currentTime=0;
+  music1.play().catch(()=>console.log("Click needed to play music"));
 }
 
-// Angry
-function angryCat(){
-  hideAll();
-  document.getElementById("angry").classList.remove("hidden");
-}
+function angryCat(){ hideAll(); document.getElementById("angry").classList.remove("hidden"); }
+function showRose(){ hideAll(); document.getElementById("rose").classList.remove("hidden"); }
+function showGallery(){ hideAll(); document.getElementById("gallery").classList.remove("hidden"); }
+function deepMessage(){ hideAll(); document.getElementById("appreciation").classList.remove("hidden"); }
+function seriousPage(){ hideAll(); document.getElementById("serious").classList.remove("hidden"); }
+function valentineAsk(){ hideAll(); document.getElementById("valentine").classList.remove("hidden"); }
 
-// Rose
-function showRose(){
-  hideAll();
-  document.getElementById("rose").classList.remove("hidden");
-}
-
-// Gallery
-function showGallery(){
-  hideAll();
-  document.getElementById("gallery").classList.remove("hidden");
-}
-
-// Appreciation
-function deepMessage(){
-  hideAll();
-  document.getElementById("appreciation").classList.remove("hidden");
-}
-
-// Serious
-function seriousPage(){
-  hideAll();
-  document.getElementById("serious").classList.remove("hidden");
-}
-
-// Valentine
-function valentineAsk(){
-  hideAll();
-  document.getElementById("valentine").classList.remove("hidden");
-}
-
-// NO FINAL
 function noFinal(){
   noCount++;
   hideAll();
   document.body.classList.add("shake","flash");
+
   document.getElementById("music1").pause();
   document.getElementById("music3").pause();
-  document.getElementById("music2").pause();
 
   if(noCount===1){
     document.getElementById("no1").classList.remove("hidden");
-    document.getElementById("music2").currentTime=0;
-    document.getElementById("music2").play();
+    const music2 = document.getElementById("music2");
+    music2.currentTime=0;
+    music2.play().catch(()=>console.log("Click needed to play music2"));
   } else if(noCount===2){
     document.getElementById("messi").classList.remove("hidden");
-  } else{
+  } else {
     document.getElementById("no3").classList.remove("hidden");
   }
 
   setTimeout(()=>{document.body.classList.remove("shake","flash");},400);
 }
 
-// SMIRK
 function smirkYes(){
   yesCount++;
-  if(yesCount<=smirks.length){
+  if(yesCount <= smirks.length){
     hideAll();
     document.getElementById("smirkContainer").classList.remove("hidden");
-    document.getElementById("smirkImg").src=smirks[yesCount-1].img;
-    document.getElementById("smirkText").innerText=smirks[yesCount-1].text;
-  } else{
+    document.getElementById("smirkImg").src = smirks[yesCount-1].img;
+    document.getElementById("smirkText").innerText = smirks[yesCount-1].text;
+  } else {
     mePage();
   }
 }
 
-// FINAL YES
 function mePage(){
   hideAll();
   document.getElementById("yesPage").classList.remove("hidden");
   createFloating();
   document.getElementById("music1").pause();
   document.getElementById("music2").pause();
-  document.getElementById("music3").currentTime=0;
-  document.getElementById("music3").play();
+  const music3 = document.getElementById("music3");
+  music3.currentTime=0;
+  music3.play().catch(()=>console.log("Click needed to play music3"));
 }
 
-// Virtual flowers
-function virtualFlowers(){
-  hideAll();
-  document.getElementById("flowers").classList.remove("hidden");
-}
+function virtualFlowers(){ hideAll(); document.getElementById("flowers").classList.remove("hidden"); }
 
-// Floating hearts
 function createFloating(){
   for(let i=0;i<20;i++){
     let heart=document.createElement("div");
@@ -336,11 +301,8 @@ function createFloating(){
   }
 }
 
-// Go back from release pics
-function goBackRelease(){
-  hideAll();
-  document.getElementById("messi").classList.remove("hidden");
-}
+function goBackRelease(){ hideAll(); document.getElementById("messi").classList.remove("hidden"); }
 </script>
+
 </body>
 </html>
