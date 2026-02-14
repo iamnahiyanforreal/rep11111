@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Asking her out💖</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  padding: 40px;
+  overflow-x: hidden;
+}
+
+.hidden { display: none; }
+
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover { transform: scale(1.1); }
+
+img { max-width: 280px; margin: 15px; border-radius: 20px; }
+
+.shake { animation: shake 0.4s; }
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.flash { background:red !important; }
+
+.floating {
+  position:absolute;
+  animation:float 8s linear infinite;
+  opacity:0.7;
+  pointer-events:none;
+}
+
+@keyframes float {
+  0% { transform:translateY(100vh); }
+  100% { transform:translateY(-10vh); }
+}
+
+/* Appreciation Grid */
+#appreciation {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#appreciation .grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+#appreciation img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+#heartText {
+  font-size:18px;
+  font-weight:bold;
+  text-align:center;
+  margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<!-- AUDIO -->
+<audio id="music1" preload="auto" loop>
+  <source src="music1.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="music2" preload="auto">
+  <source src="music2.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="music3" preload="auto" loop>
+  <source src="music3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- STEP 1 -->
+<div id="step1">
+  <img src="intro.jpg">
+  <h1>Heyy 👀</h1>
+  <h2>Your new boyfriend has something to tell you...</h2>
+  <button onclick="startSequence()">Continue</button>
+</div>
+
+<!-- STEP 2 -->
+<div id="step2" class="hidden">
+  <h2>Do you wanna hear it?</h2>
+  <button onclick="showRose()">Yes</button>
+  <button onclick="angryCat()">No</button>
+</div>
+
+<!-- Angry -->
+<div id="angry" class="hidden">
+  <img src="angrycat.jpg">
+  <h3>Excuse me??? Click YES right now 😾</h3>
+  <button onclick="showRose()">Okay okay 😅</button>
+</div>
+
+<!-- Rose -->
+<div id="rose" class="hidden">
+  <img src="heyrosecat.jpg">
+  <h1>Hey Rose 🌹</h1>
+  <button onclick="showGallery()">Continue...</button>
+</div>
+
+<!-- Gallery -->
+<div id="gallery" class="hidden">
+  <h2>My pretty rose 🌷</h2>
+  <img src="pic1.jpg">
+  <img src="pic2.jpg">
+  <img src="pic3.jpg">
+  <button onclick="deepMessage()">Next</button>
+</div>
+
+<!-- Appreciation -->
+<div id="appreciation" class="hidden">
+  <div class="grid">
+    <img src="heart1.jpg">
+    <img src="heart2.jpg">
+    <img src="heart3.jpg">
+    <img src="heart4.jpg">
+    <img src="heart5.jpg">
+    <img src="heart6.jpg">
+    <img src="heart7.jpg">
+    <img src="heart8.jpg">
+    <img src="heart9.jpg">
+    <img src="heart10.jpg">
+  </div>
+
+  <div id="heartText">
+    I'm so grateful that you exist in my life Rose. You're the prettiest girl in my eyes and I love absolutely everything about you. I love your humor, your smile, your laugh at my stupid jokes, your hair, your EYES. I ABSOLUTELY LOVE EVERYTHING ABOUT YOU MY ROSEEEEEE 💖
+  </div>
+
+  <button onclick="seriousPage()">Next</button>
+</div>
+
+<!-- Serious -->
+<div id="serious" class="hidden">
+  <img src="seriouscat.jpg">
+  <h2>I wanna ask you something very serious 💖</h2>
+  <button onclick="valentineAsk()">Continue...</button>
+</div>
+
+<!-- Valentine -->
+<div id="valentine" class="hidden">
+  <h2>Jaan… do you wanna be my Valentine? 💘</h2>
+  <button onclick="smirkYes()">YES 💖</button>
+  <button onclick="noFinal()">No</button>
+</div>
+
+<!-- No1 -->
+<div id="no1" class="hidden">
+  <img src="no1cat.jpg">
+  <h3>So you have chosen death....</h3>
+  <button onclick="smirkYes()">Okay, I give in 😅</button>
+</div>
+
+<!-- Messi -->
+<div id="messi" class="hidden">
+  <img src="messi.jpg">
+  <h3>I literally benched a football GOAT for you ⚽😭</h3>
+  <button onclick="smirkYes()">YES 😅</button>
+</div>
+
+<!-- No3 -->
+<div id="no3" class="hidden">
+  <h3>If you click 'no' again, then Im posting these online.</h3>
+  <img src="pic101.jpg" style="width:120px;">
+  <img src="pic102.jpg" style="width:120px;">
+  <img src="pic103.jpg" style="width:120px;">
+  <img src="pic104.jpg" style="width:120px;"><br>
+  <button onclick="smirkYes()">YES 😅</button>
+  <button onclick="goBackRelease()">Go Back</button>
+</div>
+
+<!-- Smirk Page -->
+<div id="smirkContainer" class="hidden">
+  <img id="smirkImg" style="max-width:300px;">
+  <h2 id="smirkText"></h2>
+  <button onclick="smirkYes()">YES 😏</button>
+  <button onclick="noFinal()">NO</button>
+</div>
+
+<!-- Final -->
+<div id="yesPage" class="hidden">
+  <img src="me.jpg">
+  <h1>I LOVEEEE YOUUUUU 💕</h1>
+  <h2>Officially my Valentine 🌹</h2>
+  <button onclick="virtualFlowers()">Next</button>
+</div>
+
+<div id="flowers" class="hidden">
+  <img src="me-flower.jpg">
+  <h2>This is how virtually receiving flowers from me looks 🌹</h2>
+</div>
+
+<script>
+let noCount=0;
+let yesCount=0;
+
+const smirks=[
+  {img:"smirk1.jpg", text:"Ki broo,sure tohh??"},
+  {img:"smirk2.jpg", text:"😏"},
+  {img:"smirk3.jpg", text:"Kya nonchalant bandi hain yaar, etooo iccha amr valentine howar??😏"}
+];
+
+function hideAll(){
+  const pages=["step1","step2","angry","rose","gallery","appreciation","serious","valentine","no1","messi","no3","smirkContainer","yesPage","flowers"];
+  pages.forEach(id=>document.getElementById(id).classList.add("hidden"));
+}
+
+// STEP 1
+function startSequence(){
+  hideAll();
+  document.getElementById("step2").classList.remove("hidden");
+  document.getElementById("music1").currentTime=0;
+  document.getElementById("music1").play();
+}
+
+// Angry
+function angryCat(){
+  hideAll();
+  document.getElementById("angry").classList.remove("hidden");
+}
+
+// Rose
+function showRose(){
+  hideAll();
+  document.getElementById("rose").classList.remove("hidden");
+}
+
+// Gallery
+function showGallery(){
+  hideAll();
+  document.getElementById("gallery").classList.remove("hidden");
+}
+
+// Appreciation
+function deepMessage(){
+  hideAll();
+  document.getElementById("appreciation").classList.remove("hidden");
+}
+
+// Serious
+function seriousPage(){
+  hideAll();
+  document.getElementById("serious").classList.remove("hidden");
+}
+
+// Valentine
+function valentineAsk(){
+  hideAll();
+  document.getElementById("valentine").classList.remove("hidden");
+}
+
+// NO FINAL
+function noFinal(){
+  noCount++;
+  hideAll();
+  document.body.classList.add("shake","flash");
+  document.getElementById("music1").pause();
+  document.getElementById("music3").pause();
+  document.getElementById("music2").pause();
+
+  if(noCount===1){
+    document.getElementById("no1").classList.remove("hidden");
+    document.getElementById("music2").currentTime=0;
+    document.getElementById("music2").play();
+  } else if(noCount===2){
+    document.getElementById("messi").classList.remove("hidden");
+  } else{
+    document.getElementById("no3").classList.remove("hidden");
+  }
+
+  setTimeout(()=>{document.body.classList.remove("shake","flash");},400);
+}
+
+// SMIRK
+function smirkYes(){
+  yesCount++;
+  if(yesCount<=smirks.length){
+    hideAll();
+    document.getElementById("smirkContainer").classList.remove("hidden");
+    document.getElementById("smirkImg").src=smirks[yesCount-1].img;
+    document.getElementById("smirkText").innerText=smirks[yesCount-1].text;
+  } else{
+    mePage();
+  }
+}
+
+// FINAL YES
+function mePage(){
+  hideAll();
+  document.getElementById("yesPage").classList.remove("hidden");
+  createFloating();
+  document.getElementById("music1").pause();
+  document.getElementById("music2").pause();
+  document.getElementById("music3").currentTime=0;
+  document.getElementById("music3").play();
+}
+
+// Virtual flowers
+function virtualFlowers(){
+  hideAll();
+  document.getElementById("flowers").classList.remove("hidden");
+}
+
+// Floating hearts
+function createFloating(){
+  for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.className="floating";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*30)+"px";
+    heart.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(heart);
+  }
+}
+
+// Go back from release pics
+function goBackRelease(){
+  hideAll();
+  document.getElementById("messi").classList.remove("hidden");
+}
+</script>
+</body>
+</html>
